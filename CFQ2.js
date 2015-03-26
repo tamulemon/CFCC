@@ -14,7 +14,8 @@ http.createServer(function(request, response) {
                 } else {
                     response.writeHead(200, {
                     'Content-length': content.length,
-                    'Content-Type': 'text/plain'});
+                    'Content-Type': 'text/plain'}); //this will make the page show up in raw code
+                    // if change to 'text/html', will actually display the page
                     }
                     response.write(content);
                     console.log('server is responding.');
