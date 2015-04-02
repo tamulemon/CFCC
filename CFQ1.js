@@ -21,7 +21,7 @@ var programmers = [
 var awesomeIndexArray =_.compact(_.pluck(_.filter(programmers,{occupation:'programmer'}), 'awesomeIndex'));
 console.log(awesomeIndexArray);
 var sum = awesomeIndexArray.reduce(function(sum,v){return sum + v;});
-$('#awesome-index').val(sum/awesomeIndexArray.length);
+$('#awesome-index').html(sum/awesomeIndexArray.length);
 
 
 
@@ -38,5 +38,5 @@ function updateAwesomeIndex (sourceArray){
     }
    return totalupdateAwesomeIndex / totalCount;
 }
-awesomeIndex.value = updateAwesomeIndex(programmers);
+awesomeIndex.innerHTML = updateAwesomeIndex(programmers);
 
