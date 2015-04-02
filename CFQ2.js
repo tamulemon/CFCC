@@ -17,6 +17,21 @@ http.createServer(function(request, response) {
                 response.writeHead(200, {
                 'Content-length': content.length,
                 'Content-Type': 'text/html'}); 
+        if (rpathname === '/') {
+            console.log('Here comes a correct request...');
+            var callback = function (error, content) {
+                if (error) {
+                    response.writeHead(500);
+                    response.write(error);
+                    response.end();
+                } else {
+                    response.writeHead(200, {
+                    'Content-length': content.length,
+                    'Content-Type': 'text/html'});
+                    }
+                    response.write(content);
+                    console.log('server is responding.');
+                    response.end();
                 }
                 response.write(content);
                 console.log('server is responding.');
