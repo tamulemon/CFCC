@@ -31,3 +31,4 @@ console.log(library.shelves.Livia.books);
 library.shelves.Livia.removeBook('Louise', 'Alice in WonderLand');
 library.shelves.Livia.removeBook('Louise', 'Alice in WonderLand');
 console.log(library.shelves.Livia);
+library.removeShelf('Michael');

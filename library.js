@@ -12,7 +12,7 @@ var library = {
         this.shelves[shelfName] = new Shelf(shelfName);
     },
     removeShelf: function(shelfName){
-        if (this.numberOfShelves > 0 && shelfName in this.shelves) {
+        if (this.numberOfShelves > 0 && this.shelves.hasOwnProperty(shelfName)) {
             var temp = this.shelves[shelfName];
             delete this.shelves[shelfName];
             this.numberOfShelves--;

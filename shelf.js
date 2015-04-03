@@ -15,7 +15,7 @@ Shelf.prototype = {
     addBook: function(author, title) {
         var combination = author + title;
         this.numberOfBooks++;
-        if (this.books.hasOwnProperty(combination) === false){
+        if (!this.books.hasOwnProperty(combination)){
             this.books[combination] = new Book(author, title);
             } else {
             this.books[combination].copyNum++;
