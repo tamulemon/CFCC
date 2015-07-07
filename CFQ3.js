@@ -12,7 +12,7 @@ var library = {
         this.shelves[shelfName] = new Shelf(shelfName);
     },
     removeShelf: function(shelfName){
-        if (this.numberOfShelves > 0 && shelfName in this.shelves) {
+        if (this.numberOfShelves > 0 && this.shelves. hasOwnProperty(shelfName)) {
             var temp = this.shelves[shelfName];
             delete this.shelves[shelfName];
             this.numberOfShelves--;
@@ -36,7 +36,7 @@ Shelf.prototype = {
     addBook: function(author, title) {
         var combination = author + title;
         this.numberOfBooks++;
-        if (this.books.hasOwnProperty(combination) === false){
+        if (!this.books.hasOwnProperty(combination)){
             this.books[combination] = new Book(author, title);
             } else {
             this.books[combination].copyNum++;

@@ -1,34 +1,34 @@
-//Original submission
-var http = require('http');
-var fs = require('fs');
-var url = require('url');
-
-http.createServer(function(request, response) {
-    var rpathname = url.parse(request.url).path;
-    console.log("Request for " + rpathname + " received.");
-    if (rpathname === '/') {
-        console.log('Here comes a correct request...');
-        var callback = function (error, content) {
-            if (error) {
-                response.writeHead(500, {'Content-Type': 'text/plain'});
-                response.write(error);
-                response.end();
-            } else {
-                response.writeHead(200, {
-                    'Content-length': content.length,
-                    'Content-Type': 'text/html'}); 
-                response.write(content);
-                console.log('server is responding.');
-                response.end();
-            }
-        };
-        fs.readFile('CFIndex.html', callback);
-    } else {
-        response.writeHead(404, {'Content-Type': 'text/plain'});
-        response.end('Incorrect root url');
-    }
-}).listen(8080, '127.0.0.1');
-console.log('server is starting.');
+////Original submission
+//var http = require('http');
+//var fs = require('fs');
+//var url = require('url');
+//
+//http.createServer(function(request, response) {
+//    var rpathname = url.parse(request.url).path;
+//    console.log("Request for " + rpathname + " received.");
+//    if (rpathname === '/') {
+//        console.log('Here comes a correct request...');
+//        var callback = function (error, content) {
+//            if (error) {
+//                response.writeHead(500, {'Content-Type': 'text/plain'});
+//                response.write(error);
+//                response.end();
+//            } else {
+//                response.writeHead(200, {
+//                    'Content-length': content.length,
+//                    'Content-Type': 'text/html'}); 
+//                response.write(content);
+//                console.log('server is responding.');
+//                response.end();
+//            }
+//        };
+//        fs.readFile('CFIndex.html', callback);
+//    } else {
+//        response.writeHead(404, {'Content-Type': 'text/plain'});
+//        response.end('Incorrect root url');
+//    }
+//}).listen(8080, '127.0.0.1');
+//console.log('server is starting.');
 
 
 
@@ -45,10 +45,11 @@ var errorHandler = function(error, content) {
         }; 
 
 server.on('error', errorHandler);
+var file = fs.createReadStream('CFIndex.html');
 
 server.on('request', function(request,response) {
     var rpathname = url.parse(request.url).path;
-    var file = fs.createReadStream('CFIndex.html');
+    
     file.on('error', errorHandler);
 //    file.emit('error', 'again!', 'abc');
     console.log("Request for " + rpathname + " received.");
